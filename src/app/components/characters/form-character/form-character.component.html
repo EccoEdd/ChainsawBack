@@ -1,0 +1,65 @@
+<form [formGroup]='formCharacter' (ngSubmit)="submitCharacter()" class="content">
+    <h2>Character</h2>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formCharacter.get('name')?.hasError('apiError')">
+        {{ formCharacter.get('name')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="l_name">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formCharacter.get('l_name')?.hasError('apiError')">
+        {{ formCharacter.get('l_name')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formCharacter.get('type')?.hasError('apiError')">
+        {{ formCharacter.get('type')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Alive</mat-label>
+        <mat-select formControlName="alive">
+            <mat-option value="1">Alive</mat-option>
+            <mat-option value="0">Dead</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <p class="bgColor" *ngIf="formCharacter.get('alive')?.hasError('apiError')">
+        {{ formCharacter.get('alive')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formCharacter.get('age')?.hasError('apiError')">
+        {{ formCharacter.get('age')?.getError('apiError') }}
+    </p>
+
+    <!--Filtro-->
+    <mat-form-field appearance="fill">
+        <mat-label>Team</mat-label>
+        <mat-select formControlName="team_id">
+            <mat-option *ngFor="let team of teams"  value="{{ team.id }}">{{ team.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+
+    <p class="bgColor" *ngIf="formCharacter.get('id')?.hasError('apiError')">
+        {{ formCharacter.get('id')?.getError('apiError') }}
+    </p>
+
+    <button type="submit" mat-raised-button color="accent">{{ characterData.update == true ? 'Update' : 'New' }}</button>
+</form>

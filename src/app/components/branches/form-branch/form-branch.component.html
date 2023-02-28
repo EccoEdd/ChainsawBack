@@ -1,0 +1,23 @@
+<form [formGroup]='formBranch' (ngSubmit)="submitBranch()" class="content">
+    <h2>Demon</h2>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formBranch.get('name')?.hasError('apiError')">
+        {{ formBranch.get('name')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formBranch.get('location')?.hasError('apiError')">
+        {{ formBranch.get('location')?.getError('apiError') }}
+    </p>
+
+    <button type="submit" mat-raised-button color="accent">{{ branchData.update == true ? 'Update' : 'New' }}</button>
+</form>

@@ -1,0 +1,37 @@
+<div class="content">
+    <form [formGroup]='formLogin' (ngSubmit)="login()" class="content">
+
+      <h1>Welcome Back</h1>
+
+        <mat-form-field appearance="fill">
+            <mat-label>email</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
+
+          <p class="bgColor" *ngIf="formLogin.get('email')?.hasError('apiError')">
+            {{ formLogin.get('email')?.getError('apiError') }}
+          </p>
+          
+          <mat-form-field appearance="fill">  
+            <mat-label>password</mat-label>
+            <input matInput formControlName="password"
+            formControlName="password"
+            [class.is-invalid]="getPasswordValidate()" 
+            [type]="hide ? 'password' : 'text'" minlength="8" maxlength="40">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <p class="bgColor" *ngIf="formLogin.get('password')?.hasError('apiError')">
+            {{ formLogin.get('password')?.getError('apiError') }}
+          </p>
+          
+          <h2 class="bgColor" *ngIf="formLogin.hasError('apiError')" class="error-message">
+            {{ formLogin.getError('apiError') }}
+          </h2>
+
+          <button type="submit"mat-raised-button color="accent">log In</button>
+
+    </form>
+</div>

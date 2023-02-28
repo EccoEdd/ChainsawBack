@@ -1,0 +1,35 @@
+<form [formGroup]='formTeam' (ngSubmit)="submitTeam()" class="content">
+    <h2>Team</h2>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formTeam.get('name')?.hasError('apiError')">
+        {{ formTeam.get('name')?.getError('apiError') }}
+    </p>
+          
+    <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="1">Active</mat-option>
+            <mat-option value="0">Unactive</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!--Filtro-->
+    <mat-form-field appearance="fill">
+        <mat-label>Branches</mat-label>
+        <mat-select formControlName="branch_id">
+            <mat-option *ngFor="let branch of branches"  value="{{ branch.id }}">{{ branch.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formTeam.get('id')?.hasError('apiError')">
+        {{ formTeam.get('id')?.getError('apiError') }}
+    </p>
+
+    <button type="submit" mat-raised-button color="accent">{{ teamData.update == true ? 'Update' : 'New' }}</button>
+</form>
+

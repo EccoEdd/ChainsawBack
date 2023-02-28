@@ -1,0 +1,19 @@
+<div class="content">
+    <form [formGroup]='formCode' (ngSubmit)="sender()" class="content">
+      <h2>Sending the Code</h2>
+
+        <mat-form-field appearance="fill">  
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="code">
+        </mat-form-field>
+        
+        <p class="bgColor" *ngIf="formCode.get('code')?.hasError('apiError')">
+          {{ formCode.get('code')?.getError('apiError') }}
+        </p>
+
+        <button type="submit"mat-raised-button color="accent">SEND CODE!</button>          
+    </form>
+
+    <h1>{{ responseMessage }}</h1>
+
+</div>

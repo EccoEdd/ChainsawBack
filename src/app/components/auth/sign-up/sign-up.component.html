@@ -1,0 +1,42 @@
+<div class="content">
+    <form [formGroup]='formSignUp' (ngSubmit)="signUp()" class="content">
+      <h2>Creating your account</h2>
+
+        <mat-form-field appearance="fill">  
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="user">
+        </mat-form-field>
+        <p class="bgColor" *ngIf="formSignUp.get('user')?.hasError('apiError')">
+          {{ formSignUp.get('user')?.getError('apiError') }}
+        </p>
+
+        <mat-form-field appearance="fill">
+            <mat-label>email</mat-label>
+            <input matInput formControlName="email">
+        </mat-form-field>
+        <p class="bgColor" *ngIf="formSignUp.get('email')?.hasError('apiError')">
+          {{ formSignUp.get('email')?.getError('apiError') }}
+        </p>
+
+        <mat-form-field appearance="fill">  
+            <mat-label>password</mat-label>
+            <input matInput formControlName="password">
+        </mat-form-field>
+        <p class="bgColor" *ngIf="formSignUp.get('password')?.hasError('apiError')">
+          {{ formSignUp.get('password')?.getError('apiError') }}
+        </p>
+
+        <mat-form-field appearance="fill">  
+            <mat-label>phone</mat-label>
+            <input matInput formControlName="phone">
+        </mat-form-field>
+        <p class="bgColor" *ngIf="formSignUp.get('phone')?.hasError('apiError')">
+          {{ formSignUp.get('phone')?.getError('apiError') }}
+        </p>
+
+        <button type="submit"mat-raised-button color="accent">Sign me up</button>          
+    </form>
+
+    <h1>{{ responseMessage }}</h1>
+
+</div>

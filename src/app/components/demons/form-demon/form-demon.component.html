@@ -1,0 +1,23 @@
+<form [formGroup]='formDemon' (ngSubmit)="submitDemon()" class="content">
+    <h2>Demon</h2>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formDemon.get('name')?.hasError('apiError')">
+        {{ formDemon.get('name')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <input matInput formControlName="category">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formDemon.get('category')?.hasError('apiError')">
+        {{ formDemon.get('category')?.getError('apiError') }}
+    </p>
+
+    <button type="submit" mat-raised-button color="accent">{{ demonData.update == true ? 'Update' : 'New' }}</button>
+</form>

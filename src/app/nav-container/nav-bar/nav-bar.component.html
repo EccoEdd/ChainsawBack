@@ -1,0 +1,54 @@
+<div class="rgbPlayer toolbar" role="banner" style="background-color: #c74f51;">
+
+    <img width="40" alt="Chainsaw Logo"   class="sizeImg"
+    src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/6023d9113801011.602ed308c3193.png"/>
+  
+    <span>Welcome</span>
+    <span>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+  
+              <ng-container *ngIf="role == 'f'">
+                <li class="nav-item">
+                  <a class="nav-link active text-light" aria-current="page" routerLink="" routerLinkActive="active">Log In</a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link text-light" routerLink="signUp" routerLinkActive="active">Sign Up</a>
+                </li>
+
+                <li class="nav-item" *ngIf="url == 'nope'">
+                  <a class="nav-link text-light" routerLink="codeSender" routerLinkActive="active">Code Sender</a>
+                </li>
+
+              </ng-container >
+  
+              <ng-container  *ngIf="role == 'u' || role == 'a'">
+                <li class="nav-item">
+                  <a class="nav-link text-light" routerLink="logOut" routerLinkActive="active">Log Out</a>
+                </li>
+                <ng-container  *ngIf="role == 'a'">
+                  <li class="nav-item">
+                    <a class="nav-link text-light" routerLink="branches" routerLinkActive="active">Branches</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" routerLink="teams" routerLinkActive="active">Teams</a>
+                  </li>
+                </ng-container >
+                <li class="nav-item">
+                  <a class="nav-link text-light" routerLink="demons" routerLinkActive="active">Demons</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" routerLink="characters" routerLinkActive="active">Characters</a>
+                </li>
+              </ng-container>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </span>
+  </div>
+  
+  <router-outlet></router-outlet>

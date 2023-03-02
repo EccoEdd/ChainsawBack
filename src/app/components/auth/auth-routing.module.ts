@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CodeGuard } from 'src/app/guards/code.guard';
 import { LoginGuard } from 'src/app/guards/login.guard';
 import { TokenGuard } from 'src/app/guards/token.guard';
 import { CodeSenderComponent } from './code-sender/code-sender.component';
@@ -10,7 +11,7 @@ import { SignUPComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
   {path:'', component: LogInComponent, canActivate: [LoginGuard]},
   {path:'signUp', component:SignUPComponent, canActivate: [LoginGuard]},
-  {path:'codeSender', component:CodeSenderComponent, canActivate: [LoginGuard]},
+  {path:'codeSender', component:CodeSenderComponent, canActivate: [LoginGuard, CodeGuard]},
   {path:'logOut', component:LogOutComponent, canActivate: [TokenGuard]}
 ];
 

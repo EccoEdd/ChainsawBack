@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginGuard } from './guards/login.guard';
 import { TokenGuard } from './guards/token.guard';
 
 const routes: Routes = [
@@ -21,6 +20,10 @@ const routes: Routes = [
   
   {path:'demons', loadChildren:
     () => import('./../app/components/demons/demons.module').then(m=> m.DemonsModule),
+      canActivate: [TokenGuard]},
+
+  {path:'users', loadChildren:
+    () => import('./../app/components/users/users.module').then(m=> m.UsersModule),
       canActivate: [TokenGuard]}
 ];
 

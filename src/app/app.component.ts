@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -9,12 +10,16 @@ import { AuthService } from './services/auth.service';
 
 
 export class AppComponent implements OnInit{
-  role: string = 'f'
 
-  constructor(private route: AuthService){}
+  role: string = 'f'
+  url: string | null = 'nope'
+    
+  constructor(private route: AuthService, private router: Router, private authService: AuthService){}
 
   ngOnInit(): void {
     this.verify()
+    this.url = localStorage.getItem('protected_url')
+    console.log('I\'m here')
   }
 
   verify(){
@@ -23,7 +28,7 @@ export class AppComponent implements OnInit{
         this.role = response.role
       },
       error: () =>{
-
+      
       },
       complete: () => {
         

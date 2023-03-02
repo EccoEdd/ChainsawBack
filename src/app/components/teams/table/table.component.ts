@@ -23,6 +23,7 @@ export class TableComponent implements OnInit{
   ]
 
   dataSource: any
+
   teams: ITeam[] = []
   team?: ITeam = {
     name:'',
@@ -46,7 +47,6 @@ export class TableComponent implements OnInit{
       next: (response) => {
         this.teams = response.data
         this.setData()
-        //console.log(this.teams)
       },
       error: (response) => {console.log(response)},
       complete: () => {console.log('ok')}
@@ -79,10 +79,11 @@ export class TableComponent implements OnInit{
         }
       )
     }
-    
   }
 
   deleteT(id: number){
+    if(!confirm('Ok'))
+      return
     this.delete = true
     this.route.deleteTeam(id).subscribe({
       next: (response) => {

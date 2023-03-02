@@ -5,6 +5,7 @@ import { IBranch } from '../interfaces/ibranch';
 import { ICharacter } from '../interfaces/icharacter';
 import { IDemon } from '../interfaces/idemon';
 import { ITeam } from '../interfaces/iteam';
+import { IUser } from '../interfaces/user';
 
 @Injectable({
     providedIn: 'root'
@@ -68,5 +69,19 @@ export class apiRoutes{
     }
     deleteDemon(id: number){
       return this.http.delete<any>(`${Enviromet.url}chainsaw/demons/delete/${id}`)
+    }
+
+    //Users
+    readUsers(){
+      return this.http.get<any>(`${Enviromet.url}user/get`)
+    }
+    updateUser(user: IUser, id: number){
+      return this.http.put<any>(`${Enviromet.url}user/update/${id}`, user)
+    }
+    deleteUser(id: number){
+      return this.http.delete<any>(`${Enviromet.url}user/delete/${id}`)
+    }
+    readRoles(){
+      return this.http.get<any>(`${Enviromet.url}roles/get`)
     }
 }

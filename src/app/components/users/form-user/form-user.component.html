@@ -1,0 +1,56 @@
+<form [formGroup]='formUser' (ngSubmit)="submitUser()" class="content">
+    <h2>User</h2>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>User</mat-label>
+        <input matInput formControlName="user">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formUser.get('user')?.hasError('apiError')">
+        {{ formUser.get('user')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formUser.get('email')?.hasError('apiError')">
+        {{ formUser.get('email')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formUser.get('phone')?.hasError('apiError')">
+        {{ formUser.get('phone')?.getError('apiError') }}
+    </p>
+          
+    <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="1">Active</mat-option>
+            <mat-option value="0">Unactive</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <p class="bgColor" *ngIf="formUser.get('status')?.hasError('apiError')">
+        {{ formUser.get('status')?.getError('apiError') }}
+    </p>
+
+    <!--Filtro-->
+    <mat-form-field appearance="fill">
+        <mat-label>Roles</mat-label>
+        <mat-select formControlName="role_id">
+            <mat-option *ngFor="let rol of roles"  value="{{ rol.id }}">{{ rol.description }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formUser.get('id')?.hasError('apiError')">
+        {{ formUser.get('id')?.getError('apiError') }}
+    </p>
+
+    <button type="submit" mat-raised-button color="accent">{{ userData.update == true ? 'Update' : 'New' }}</button>
+</form>
+

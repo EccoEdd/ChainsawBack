@@ -91,6 +91,8 @@ export class TableComponent implements OnInit {
     }
   }
   deleteC(id: number){
+    if(!confirm('Ok'))
+      return
     this.delete = true
     this.route.deleteCharacters(id).subscribe({
       next: (response) => {

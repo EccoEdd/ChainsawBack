@@ -79,6 +79,8 @@ export class TableComponent implements OnInit{
   }
 
   deleteB(id: number){
+    if(!confirm('Ok'))
+      return
     this.delete = true
     this.route.deleteBranch(id).subscribe({
       next: (response) => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AppComponent } from 'src/app/app.component';
 import { IUser } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,7 +15,7 @@ export class SignUPComponent implements OnInit{
   user?: IUser
   responseMessage?: string;
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService, private app: AppComponent){}
 
   ngOnInit(): void {
    this.formBuilder()
@@ -67,7 +68,9 @@ export class SignUPComponent implements OnInit{
           console.log(response)
         }
       },
-      complete: () => {console.log('ok')}
+      complete: () => {
+        this.app.ngOnInit()
+      }
     })
     console.log(this.user)
   }

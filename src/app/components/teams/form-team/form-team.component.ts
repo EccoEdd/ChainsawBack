@@ -14,7 +14,7 @@ import { apiRoutes } from 'src/app/services/apiRoutes.service';
 export class FormTeamComponent implements OnInit{
   formTeam: FormGroup = {} as FormGroup
   team?: ITeam
-  responseMessage?: string;
+  responseMessage?: string
   branches: IBranch[] = []
   branchName?: string 
  
@@ -23,11 +23,8 @@ export class FormTeamComponent implements OnInit{
       private dialogRef: MatDialogRef<FormTeamComponent>){ }
   
    ngOnInit(): void {
-    
     this.formBuilder()
     this.getBranches()
-    
-    //console.log(this.teamData)
   }
 
   formBuilder(): void{
@@ -108,8 +105,6 @@ export class FormTeamComponent implements OnInit{
       status: this.teamData.status,
       branch_id: this.teamData.brach_id
     })
-    //this.formTeam.get('branch_id')?.setValue(this.teamData.brach_id)
-    //this.branchName = this.branches.filter(b => b.id == this.teamData.branch_id)[0].name
   }
 
   

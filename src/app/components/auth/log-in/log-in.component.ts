@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { IUser } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { ResetService } from 'src/app/services/reset.service';
 
 @Component({
   selector: 'app-log-in',
@@ -14,7 +16,7 @@ export class LogInComponent implements OnInit {
   formLogin: FormGroup = {} as FormGroup
   user?: IUser
   hide: boolean = true
-  constructor(private authService:AuthService, private router: Router){ }
+  constructor(private authService:AuthService, private router: Router, private app: AppComponent){ }
 
   ngOnInit(): void {
    this.formBuilder()
@@ -60,6 +62,7 @@ export class LogInComponent implements OnInit {
         console.log(response)
       }},
       complete: () => {
+        this.app.ngOnInit()
         this.router.navigate(['demons'])
       }
     })

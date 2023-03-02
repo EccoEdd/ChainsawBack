@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { ICode } from 'src/app/interfaces/icode';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CodeSenderComponent implements OnInit{
   
-  constructor( private authService:AuthService ){ }
+  constructor( private authService:AuthService, private app: AppComponent, private route: Router ){ }
   formCode: FormGroup = {} as FormGroup
   code?: ICode
   responseMessage?: string;
@@ -50,11 +52,16 @@ export class CodeSenderComponent implements OnInit{
           this.responseMessage = 'Times up!'
         }
          else {
+          localStorage.removeItem('protected_url')
+          this.app.ngOnInit()
+          this.route.navigate([''])
           console.log(response)
         }
       },
       complete: () => {
         localStorage.removeItem('protected_url')
+        this.app.ngOnInit()
+        this.route.navigate([''])
       }
     })
   }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LmaoComponent } from './components/lmao/lmao.component';
 import { AdminGuard } from './guards/admin.guard';
 import { NomalGuard } from './guards/nomal.guard';
 import { TokenGuard } from './guards/token.guard';
@@ -34,7 +35,9 @@ const routes: Routes = [
 
   {path: 'void', loadChildren:
     () => import('./../app/components/void/void.module').then(m=> m.VoidModule),
-      canActivate: [TokenGuard]}
+      canActivate: [TokenGuard]},
+
+  {path: '**', component:LmaoComponent}
 ];
 
 @NgModule({

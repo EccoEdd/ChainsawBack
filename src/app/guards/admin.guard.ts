@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AppComponent } from '../app.component';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TokenGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor (private router: Router, private authService: AuthService) {}
   role: string = ''
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      
       this.authService.validTokenRole().subscribe({
         next: (response) => {
           this.role = response.role
-          if(this.role != 'a' && this.role != 'u'){ 
+          if(this.role != 'a'){ 
             this.router.navigate(['logOut'])
             return false
           } else {
@@ -32,4 +30,5 @@ export class TokenGuard implements CanActivate {
       })
       return true
   }
+  
 }

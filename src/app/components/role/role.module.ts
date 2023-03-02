@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RoleRoutingModule } from './role-routing.module';
+import { MaterialModulesModule } from '../material-modules/material-modules.module';
+import { TableComponent } from './table/table.component';
+import { FormRoleComponent } from './form-role/form-role.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TableComponent,
+    FormRoleComponent
+  ],
   imports: [
     CommonModule,
-    RoleRoutingModule
+    RoleRoutingModule,
+    MaterialModulesModule
   ]
 })
 export class RoleModule { }

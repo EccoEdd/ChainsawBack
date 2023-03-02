@@ -4,6 +4,7 @@ import { Enviromet } from 'src/enviroments/enviroment';
 import { IBranch } from '../interfaces/ibranch';
 import { ICharacter } from '../interfaces/icharacter';
 import { IDemon } from '../interfaces/idemon';
+import { Irole } from '../interfaces/irole';
 import { ITeam } from '../interfaces/iteam';
 import { IUser } from '../interfaces/user';
 
@@ -81,7 +82,21 @@ export class apiRoutes{
     deleteUser(id: number){
       return this.http.delete<any>(`${Enviromet.url}user/delete/${id}`)
     }
+
+    //Roles
+    createRol(role: Irole){
+      return this.http.post<any>(`${Enviromet.url}roles/create`, role)
+    }
+
     readRoles(){
       return this.http.get<any>(`${Enviromet.url}roles/get`)
+    }
+
+    updateRole(role: Irole, id: number){
+      return this.http.put<any>(`${Enviromet.url}roles/update/${id}`, role)
+    }
+
+    deleteRole(id: number){
+      return this.http.delete<any>(`${Enviromet.url}roles/delete/${id}`)
     }
 }

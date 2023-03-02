@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
+import { NomalGuard } from './guards/nomal.guard';
 import { TokenGuard } from './guards/token.guard';
 
 const routes: Routes = [
@@ -8,11 +10,11 @@ const routes: Routes = [
   
   {path: 'branches', loadChildren: 
     () => import('./../app/components/branches/branches.module').then(m => m.BranchesModule), 
-      canActivate: [TokenGuard]},
+      canActivate: [AdminGuard]},
 
   {path:'teams', loadChildren: 
     () => import('./../app/components/teams/teams.module').then(m => m.TeamsModule),
-      canActivate: [TokenGuard]},
+      canActivate: [AdminGuard]},
   
   {path:'characters', loadChildren:
     () => import('./../app/components/characters/characters.module').then(m=> m.CharactersModule),
@@ -24,6 +26,14 @@ const routes: Routes = [
 
   {path:'users', loadChildren:
     () => import('./../app/components/users/users.module').then(m=> m.UsersModule),
+      canActivate: [AdminGuard]},
+  
+  {path: 'roles', loadChildren:
+    () => import('./../app/components/role/role.module').then(m=> m.RoleModule),
+      canActivate: [AdminGuard]},
+
+  {path: 'void', loadChildren:
+    () => import('./../app/components/void/void.module').then(m=> m.VoidModule),
       canActivate: [TokenGuard]}
 ];
 

@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
 
-            <ng-container *ngIf="role == 'f'">
+            <ng-container *ngIf="role == 'Hey'">
               <li class="nav-item">
                 <a class="nav-link active text-light" aria-current="page" routerLink="" routerLinkActive="active">Log In</a>
               </li> 
@@ -22,7 +22,7 @@
               </li>
             </ng-container >
 
-            <ng-container  *ngIf="role == 'u' || role == 'a'">
+            <ng-container  *ngIf="role != 'Hey'">
               <li class="nav-item">
                 <a class="nav-link text-light" routerLink="logOut" routerLinkActive="active">Log Out</a>
               </li>
@@ -31,18 +31,23 @@
                   <a class="nav-link text-light" routerLink="users" routerLinkActive="active">Users</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link text-light" routerLink="roles" routerLinkActive="active">Roles</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link text-light" routerLink="branches" routerLinkActive="active">Branches</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-light" routerLink="teams" routerLinkActive="active">Teams</a>
                 </li>
               </ng-container >
-              <li class="nav-item">
-                <a class="nav-link text-light" routerLink="demons" routerLinkActive="active">Demons</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-light" routerLink="characters" routerLinkActive="active">Characters</a>
-              </li>
+              <ng-container *ngIf="role == 'a' || role == 'u'">
+                <li class="nav-item">
+                  <a class="nav-link text-light" routerLink="demons" routerLinkActive="active">Demons</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" routerLink="characters" routerLinkActive="active">Characters</a>
+                </li>
+              </ng-container>
             </ng-container>
             
           </ul>

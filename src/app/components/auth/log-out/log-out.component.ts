@@ -15,6 +15,6 @@ export class LogOutComponent {
     this.authService.logOut().subscribe()
     localStorage.removeItem('token')
     this.router.navigate([''])
-    this.app.role = 'f'
+    this.app.role = 'Hey'
   }
 }

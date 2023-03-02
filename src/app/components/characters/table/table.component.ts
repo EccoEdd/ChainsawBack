@@ -109,7 +109,6 @@ export class TableComponent implements OnInit {
   }
   rowClick(row:any){
     this.character = row
-    //console.log(this.team)
     this.openDialogC(this.character, true)
   }
 }

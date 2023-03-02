@@ -1,0 +1,23 @@
+<form [formGroup]='formRole' (ngSubmit)="submitRole()" class="content">
+    <h2>Role</h2>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="role">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formRole.get('role')?.hasError('apiError')">
+        {{ formRole.get('role')?.getError('apiError') }}
+    </p>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+    </mat-form-field>
+
+    <p class="bgColor" *ngIf="formRole.get('description')?.hasError('apiError')">
+        {{ formRole.get('description')?.getError('apiError') }}
+    </p>
+
+    <button type="submit" mat-raised-button color="accent">{{ roleData.update == true ? 'Update' : 'New' }}</button>
+</form>

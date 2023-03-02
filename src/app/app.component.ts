@@ -11,7 +11,7 @@ import { AuthService } from './services/auth.service';
 
 export class AppComponent implements OnInit{
 
-  role: string = 'f'
+  role: string = 'Hey'
   url: string | null = 'nope'
     
   constructor(private route: AuthService, private router: Router, private authService: AuthService){}
